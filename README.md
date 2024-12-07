@@ -12,7 +12,7 @@ Thành viên nhóm:
 Trương Thị Thủy (C++)
 Trần Thái Quyền (C++)
 Phạm Văn Thành (C#)
-Trần Anh Đưc (C#)
+Trần Anh Đức (C#)
 
 Báo cáo
 Phiếu báo cáo học tập
