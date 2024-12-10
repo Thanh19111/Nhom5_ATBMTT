@@ -1,0 +1,10 @@
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\bin\Debug\AES Encryption.exe.config
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\bin\Debug\AES Encryption.exe
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\bin\Debug\AES Encryption.pdb
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.csproj.AssemblyReference.cache
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES_Encryption.Properties.Resources.resources
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.csproj.GenerateResource.cache
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.csproj.CoreCompileInputs.cache
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.exe
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.pdb
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES_Encryption.AES_Encryption.resources
