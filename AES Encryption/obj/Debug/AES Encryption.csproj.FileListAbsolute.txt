@@ -8,3 +8,5 @@ D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.
 D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.exe
 D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encryption.pdb
 D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES_Encryption.AES_Encryption.resources
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\bin\Debug\Rijndael256.dll
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES Encryption\obj\Debug\AES Encr.7E929836.Up2Date
