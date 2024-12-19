@@ -8,11 +8,11 @@ Giáo viên hướng dẫn : TS. Phạm Văn Hiệp
 Mã Lớp học phần: 20241IT6001002  
 
 Nhóm: 5  
-Thành viên nhóm:  
-Trương Thị Thủy (C++)  
-Trần Thái Quyền (C++)  
-Phạm Văn Thành (C#)  
-Trần Anh Đức (C#)  
+Thành viên nhóm:    
+Trần Thái Quyền (C++) 
+Trần Anh Đức (C++)   
+Phạm Văn Thành (C#)
+Trương Thị Thủy (C#)  
 
 Báo cáo  
 Phiếu báo cáo học tập  
