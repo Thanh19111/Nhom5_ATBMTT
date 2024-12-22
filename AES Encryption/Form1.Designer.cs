@@ -46,12 +46,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtekey);
             this.groupBox1.Controls.Add(this.txtecipher);
@@ -59,11 +61,11 @@
             this.groupBox1.Controls.Add(this.txtemess);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(0, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(580, 482);
+            this.groupBox1.Size = new System.Drawing.Size(580, 496);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encryption";
@@ -145,14 +147,14 @@
             this.groupBox2.Controls.Add(this.txtdcipher);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(580, 0);
+            this.groupBox2.Location = new System.Drawing.Point(579, 13);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(564, 482);
+            this.groupBox2.Size = new System.Drawing.Size(565, 496);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Encryption";
+            this.groupBox2.Text = "Decryption";
             // 
             // button2
             // 
@@ -222,17 +224,27 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Cipher";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(400, 401);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(83, 40);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // AES_Encryption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 498);
+            this.ClientSize = new System.Drawing.Size(1147, 515);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AES_Encryption";
-            this.Text = "Form1";
+            this.Text = "AES Encryption";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -261,6 +273,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
