@@ -1,0 +1,7 @@
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\bin\Debug\AES_Encryption.exe.config
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\bin\Debug\AES_Encryption.exe
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\bin\Debug\AES_Encryption.pdb
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\obj\Debug\AES_Encryption.csproj.AssemblyReference.cache
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\obj\Debug\AES_Encryption.csproj.CoreCompileInputs.cache
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\obj\Debug\AES_Encryption.exe
+D:\Users\Desktop\WorkSpace\Nhom5_ATBMTT\AES_Encryption\obj\Debug\AES_Encryption.pdb
