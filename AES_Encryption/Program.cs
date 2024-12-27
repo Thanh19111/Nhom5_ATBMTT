@@ -30,20 +30,21 @@ namespace AES_Encryption
 
         static void Main(string[] args)
         {
-            byte[,] plaintext = new byte[4, 4]
+            byte[,] plaintext = new byte[,]
             {
-                { 0x32, 0x43, 0xf6, 0xa8 },
-                { 0x88, 0x5a, 0x30, 0x8d },
-                { 0x31, 0x31, 0x98, 0xa2 },
-                { 0xe0, 0x37, 0x07, 0x34 }
+            { 0x12, 0x34, 0x56, 0x78 },
+            { 0x90, 0xAB, 0xCD, 0xEF },
+            { 0xFE, 0xDC, 0xBA, 0x98 },
+            { 0x76, 0x54, 0x32, 0x10 }
             };
 
-            byte[] key = new byte[16]
+            // Khóa AES 16 byte
+            byte[] key = new byte[]
             {
-                0x2b, 0x7e, 0x15, 0x16,
-                0x28, 0xae, 0xd2, 0xa6,
-                0xab, 0xf7, 0x4d, 0x3b,
-                0x88, 0x3c, 0xee, 0x6d
+            0x0F, 0x15, 0x71, 0xC9,
+            0x47, 0xD9, 0xE8, 0x59,
+            0x0C, 0xB7, 0xAD, 0xD6,
+            0xAF, 0x7F, 0x67, 0x98
             };
 
             byte[,] ciphertext = EncryptAES(plaintext, key);
@@ -108,7 +109,7 @@ namespace AES_Encryption
                 bool hiBitSet = (a & 0x80) != 0;
                 a <<= 1;
                 if (hiBitSet)
-                    a ^= 0x1B; // Giảm đa thức AES
+                    a ^= 0x1B;
                 b >>= 1;
             }
             return result;
@@ -136,15 +137,12 @@ namespace AES_Encryption
 
         public static byte[,] EncryptAES(byte[,] plaintext, byte[] key)
         {
-            // Sinh tất cả các khóa con
             byte[,] expandedKey = KeyExpansion(key);
 
-            byte[,] state = (byte[,])plaintext.Clone(); // Sao chép trạng thái
+            byte[,] state = (byte[,])plaintext.Clone();
 
-            // Thêm khóa vòng ban đầu
             AddRoundKey(state, GetRoundKey(expandedKey, 0));
 
-            // 9 vòng cho AES-128
             for (int round = 1; round <= 9; round++)
             {
                 SubByte(state);
@@ -153,7 +151,6 @@ namespace AES_Encryption
                 AddRoundKey(state, GetRoundKey(expandedKey, round));
             }
 
-            // Vòng cuối cùng (không MixColumns)
             SubByte(state);
             ShiftRows(state);
             AddRoundKey(state, GetRoundKey(expandedKey, 10));
@@ -164,18 +161,17 @@ namespace AES_Encryption
 
         public static byte[,] KeyExpansion(byte[] key)
         {
-            if (key.Length != 16) // AES-128
+            if (key.Length != 16)
                 throw new ArgumentException("Key length must be 16 bytes for AES-128.");
 
-            int Nb = 4; // Số cột trong trạng thái (4x4)
-            int Nk = 4; // Số từ (word) trong khóa ban đầu
-            int Nr = 10; // Số vòng (AES-128 có 10 vòng)
-            int totalWords = Nb * (Nr + 1); // Tổng số từ sau khi mở rộng
+            int Nb = 4;
+            int Nk = 4; 
+            int Nr = 10;
+            int totalWords = Nb * (Nr + 1);
 
-            byte[,] expandedKey = new byte[4, totalWords]; // Kết quả mở rộng khóa
-            byte[] temp = new byte[4]; // Biến tạm lưu từng từ
+            byte[,] expandedKey = new byte[4, totalWords];
+            byte[] temp = new byte[4];
 
-            // Sao chép khóa ban đầu vào expandedKey
             for (int i = 0; i < Nk; i++)
             {
                 expandedKey[0, i] = key[4 * i];
@@ -184,23 +180,19 @@ namespace AES_Encryption
                 expandedKey[3, i] = key[4 * i + 3];
             }
 
-            // Mở rộng khóa
             for (int i = Nk; i < totalWords; i++)
             {
-                // Lấy từ trước đó
                 temp[0] = expandedKey[0, i - 1];
                 temp[1] = expandedKey[1, i - 1];
                 temp[2] = expandedKey[2, i - 1];
                 temp[3] = expandedKey[3, i - 1];
 
-                // Với các từ tại vị trí chia hết cho Nk, áp dụng SubWord và RotWord
                 if (i % Nk == 0)
                 {
-                    temp = SubWord(RotWord(temp)); // Áp dụng RotWord và SubWord
-                    temp[0] ^= Rcon(i / Nk); // XOR với Rcon
+                    temp = SubWord(RotWord(temp));
+                    temp[0] ^= Rcon(i / Nk);
                 }
 
-                // XOR với từ Nk trước đó
                 for (int j = 0; j < 4; j++)
                 {
                     expandedKey[j, i] = (byte)(expandedKey[j, i - Nk] ^ temp[j]);
@@ -230,7 +222,6 @@ namespace AES_Encryption
 
             for (int i = 2; i < 256; i++)
             {
-                // Nếu bit cao (MSB) của rcon[i - 1] được thiết lập, XOR với 0x1B
                 rcon[i] = (byte)((rcon[i - 1] << 1) ^ ((rcon[i - 1] & 0x80) != 0 ? 0x1B : 0x00));
             }
 
@@ -254,9 +245,9 @@ namespace AES_Encryption
 
         public static byte SubByte(byte input)
         {
-            int row = (input >> 4) & 0x0F; // Lấy 4 bit cao
-            int col = input & 0x0F;        // Lấy 4 bit thấp
-            return SBox[row, col];         // Truy xuất giá trị từ S-box
+            int row = (input >> 4) & 0x0F;
+            int col = input & 0x0F;
+            return SBox[row, col];
         }
 
 
