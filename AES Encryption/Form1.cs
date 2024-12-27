@@ -14,7 +14,7 @@ namespace AES_Encryption
         public AES_Encryption()
         {
             InitializeComponent();
-            items = new string[] { "Aes_128", "Aes_192", "Aes_256" };
+            items = new string[] { "AES_128", "AES_192", "AES_256" };
         }
         string[] items;
         String mess;
@@ -27,6 +27,7 @@ namespace AES_Encryption
         private void AES_Encrypt()
         {
             var inputText = mess = txtemess.Text.Trim();
+            mess = inputText;
             var key = txtekey.Text.Trim();
 
             if (String.IsNullOrWhiteSpace(inputText))
@@ -104,6 +105,7 @@ namespace AES_Encryption
             try
             {
                 var inputText = txtdcipher.Text.Trim();
+      
                 string key = txtdk.Text.Trim();
 
                 if (String.IsNullOrWhiteSpace(inputText))
@@ -117,10 +119,28 @@ namespace AES_Encryption
                     return;
                 }
 
-                string DecryptText = Rijndael.Decrypt(inputText, key, KeySize.Aes256);
-                if (DecryptText.Length > 0 && !DecryptText.Equals(txtemess.Text.Trim()))
+                string DecryptText;
+                if (cbo.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Bản mã đã bị sửa đổi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     DecryptText = Rijndael.Decrypt(inputText, key, KeySize.Aes128);
+                }else if(cbo.SelectedIndex == 1)
+                {
+                    DecryptText = Rijndael.Decrypt(inputText, key, KeySize.Aes192);
+                }
+                else if(cbo.SelectedIndex == 2)
+                {
+                    DecryptText = Rijndael.Decrypt(inputText, key, KeySize.Aes256);
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình chọn không gian khóa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (DecryptText.Length > 0 && !DecryptText.Equals(mess))
+                {
+                    txtdmess.Text = DecryptText;
+                    MessageBox.Show("Bản mã đã bị sửa đổi", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
                 else
@@ -133,7 +153,7 @@ namespace AES_Encryption
             {
                 if (ex.Message.Contains("Padding is invalid and cannot be removed"))
                 {
-                    MessageBox.Show("Khóa đầu vào không hợp lệ hoặc đã bị sửa đổi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Khóa đầu vào hoặc bản mã nhập vào không hợp lệ hoặc đã bị sửa đổi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -204,31 +224,32 @@ namespace AES_Encryption
         private void button3_Click_1(object sender, EventArgs e)
         {
             //tab1 Nhap
-            string filePath = "mess.txt";
-            if (File.Exists(filePath))
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Title = "Chọn tệp";
+            openFileDialog.Multiselect = false;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ReadFile(filePath, txtemess);
-            }
-            else
-            {
-                File.Create(filePath).Close();
-                MessageBox.Show("File " + filePath + " đã được tạo trong thư mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string fullPath = openFileDialog.FileName;
+                ReadFile(fullPath, txtemess);
             }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             //tab1 ghi
-            string filePath = "encrypt.txt";
             string content = txtecipher.Text.Trim();
-            if (File.Exists(filePath))
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Lưu tệp";
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.DefaultExt = "txt";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.OverwritePrompt = false;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                WriteFile(filePath, content);
-            }
-            else
-            {
-                File.Create(filePath).Close();
-                MessageBox.Show("File " + filePath + " đã được tạo và ghi trong thư mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string filePath = saveFileDialog.FileName;
                 WriteFile(filePath, content);
             }
         }
@@ -236,30 +257,31 @@ namespace AES_Encryption
         private void button5_Click(object sender, EventArgs e)
         {
             //tab2 // nhap
-            string filePath = "encrypt.txt";
-            if (File.Exists(filePath))
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Title = "Chọn tệp";
+            openFileDialog.Multiselect = false;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ReadFile(filePath, txtdcipher);
-            }
-            else
-            {
-                File.Create(filePath).Close();
-                MessageBox.Show("File " + filePath + " đã được tạo trong thư mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string fullPath = openFileDialog.FileName;
+                ReadFile(fullPath, txtdcipher);
             }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string filePath = "decrypt.txt";
             string content = txtemess.Text.Trim();
-            if (File.Exists(filePath))
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Lưu tệp";
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.DefaultExt = "txt";
+            saveFileDialog.AddExtension = true;
+
+            saveFileDialog.OverwritePrompt = false;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                WriteFile(filePath, content);
-            }
-            else
-            {
-                File.Create(filePath).Close();
-                MessageBox.Show("File " + filePath + " đã được tạo và ghi trong thư mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string filePath = saveFileDialog.FileName;
                 WriteFile(filePath, content);
             }
         }
@@ -335,6 +357,25 @@ namespace AES_Encryption
         {
             cbo.DataSource = items;
             cbo.SelectedIndex = 0;
+        }
+
+        private void txtemess_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Title = "Chọn tệp";
+            openFileDialog.Multiselect = false;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fullPath = openFileDialog.FileName;
+                ReadFile(fullPath, txtdcipher);
+            }
         }
     }
 }

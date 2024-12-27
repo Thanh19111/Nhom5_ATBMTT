@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbo = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -42,27 +44,26 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtdcipher = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtdmess = new System.Windows.Forms.TextBox();
-            this.txtdk = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cbo = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtdk = new System.Windows.Forms.TextBox();
+            this.txtdmess = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtdcipher = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,6 +89,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mã Hóa";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cbo
+            // 
+            this.cbo.FormattingEnabled = true;
+            this.cbo.Location = new System.Drawing.Point(5, 20);
+            this.cbo.Name = "cbo";
+            this.cbo.Size = new System.Drawing.Size(91, 30);
+            this.cbo.TabIndex = 12;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button7.Location = new System.Drawing.Point(390, 459);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(101, 40);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Ghi";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button4
             // 
@@ -134,13 +154,13 @@
             // 
             this.txtecipher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtecipher.Location = new System.Drawing.Point(134, 280);
+            this.txtecipher.Location = new System.Drawing.Point(134, 281);
             this.txtecipher.Margin = new System.Windows.Forms.Padding(4);
             this.txtecipher.Multiline = true;
             this.txtecipher.Name = "txtecipher";
             this.txtecipher.ReadOnly = true;
             this.txtecipher.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtecipher.Size = new System.Drawing.Size(748, 121);
+            this.txtecipher.Size = new System.Drawing.Size(748, 116);
             this.txtecipher.TabIndex = 5;
             this.txtecipher.TextChanged += new System.EventHandler(this.txtecipher_TextChanged);
             // 
@@ -159,13 +179,14 @@
             // 
             this.txtemess.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtemess.Location = new System.Drawing.Point(134, 49);
+            this.txtemess.Location = new System.Drawing.Point(134, 54);
             this.txtemess.Margin = new System.Windows.Forms.Padding(4);
             this.txtemess.Multiline = true;
             this.txtemess.Name = "txtemess";
             this.txtemess.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtemess.Size = new System.Drawing.Size(748, 95);
             this.txtemess.TabIndex = 3;
+            this.txtemess.TextChanged += new System.EventHandler(this.txtemess_TextChanged);
             // 
             // label3
             // 
@@ -210,21 +231,16 @@
             this.tabPage1.Text = "Mã hóa";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // tabPage2
             // 
-            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button7.Location = new System.Drawing.Point(390, 459);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(101, 40);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Ghi";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(956, 522);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Giải mã";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -243,49 +259,81 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(973, 516);
+            this.groupBox2.Size = new System.Drawing.Size(950, 516);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Giải Mã";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // label8
+            // button8
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(46, 93);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 22);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Bản mã";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button8.Location = new System.Drawing.Point(391, 460);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(101, 40);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Ghi";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // label6
+            // button6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 211);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 22);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Khóa";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button6.Location = new System.Drawing.Point(630, 460);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(101, 40);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Xóa";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // txtdcipher
+            // button5
             // 
-            this.txtdcipher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.Location = new System.Drawing.Point(271, 460);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(101, 40);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Nhập";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.Location = new System.Drawing.Point(509, 460);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 40);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Giải mã";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txtdk
+            // 
+            this.txtdk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdcipher.Location = new System.Drawing.Point(136, 53);
-            this.txtdcipher.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdcipher.Multiline = true;
-            this.txtdcipher.Name = "txtdcipher";
-            this.txtdcipher.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtdcipher.Size = new System.Drawing.Size(787, 96);
-            this.txtdcipher.TabIndex = 3;
-            this.txtdcipher.TextChanged += new System.EventHandler(this.txtdcipher_TextChanged);
+            this.txtdk.Location = new System.Drawing.Point(136, 211);
+            this.txtdk.Name = "txtdk";
+            this.txtdk.Size = new System.Drawing.Size(747, 30);
+            this.txtdk.TabIndex = 7;
+            this.txtdk.TextChanged += new System.EventHandler(this.txtdk_TextChanged);
+            // 
+            // txtdmess
+            // 
+            this.txtdmess.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdmess.Location = new System.Drawing.Point(136, 284);
+            this.txtdmess.Margin = new System.Windows.Forms.Padding(4);
+            this.txtdmess.Multiline = true;
+            this.txtdmess.Name = "txtdmess";
+            this.txtdmess.ReadOnly = true;
+            this.txtdmess.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtdmess.Size = new System.Drawing.Size(747, 116);
+            this.txtdmess.TabIndex = 5;
+            this.txtdmess.TextChanged += new System.EventHandler(this.txtdmess_TextChanged);
             // 
             // label5
             // 
@@ -299,94 +347,52 @@
             this.label5.Text = "Bản rõ";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // txtdmess
+            // txtdcipher
             // 
-            this.txtdmess.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtdcipher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdmess.Location = new System.Drawing.Point(136, 284);
-            this.txtdmess.Margin = new System.Windows.Forms.Padding(4);
-            this.txtdmess.Multiline = true;
-            this.txtdmess.Name = "txtdmess";
-            this.txtdmess.ReadOnly = true;
-            this.txtdmess.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtdmess.Size = new System.Drawing.Size(787, 116);
-            this.txtdmess.TabIndex = 5;
-            this.txtdmess.TextChanged += new System.EventHandler(this.txtdmess_TextChanged);
+            this.txtdcipher.Location = new System.Drawing.Point(136, 53);
+            this.txtdcipher.Margin = new System.Windows.Forms.Padding(4);
+            this.txtdcipher.Multiline = true;
+            this.txtdcipher.Name = "txtdcipher";
+            this.txtdcipher.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtdcipher.Size = new System.Drawing.Size(747, 96);
+            this.txtdcipher.TabIndex = 3;
+            this.txtdcipher.TextChanged += new System.EventHandler(this.txtdcipher_TextChanged);
             // 
-            // txtdk
+            // label6
             // 
-            this.txtdk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdk.Location = new System.Drawing.Point(136, 211);
-            this.txtdk.Name = "txtdk";
-            this.txtdk.Size = new System.Drawing.Size(787, 30);
-            this.txtdk.TabIndex = 7;
-            this.txtdk.TextChanged += new System.EventHandler(this.txtdk_TextChanged);
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(46, 211);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 22);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Khóa";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // button2
+            // label8
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(520, 460);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 40);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Giải mã";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(46, 93);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 22);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Bản mã";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // button5
+            // fileSystemWatcher1
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(282, 460);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(101, 40);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Nhập";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // button6
+            // openFileDialog1
             // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.Location = new System.Drawing.Point(641, 460);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(101, 40);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Xóa";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button8.Location = new System.Drawing.Point(402, 460);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(101, 40);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "Ghi";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(979, 522);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Giải mã";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // cbo
-            // 
-            this.cbo.FormattingEnabled = true;
-            this.cbo.Location = new System.Drawing.Point(5, 20);
-            this.cbo.Name = "cbo";
-            this.cbo.Size = new System.Drawing.Size(82, 30);
-            this.cbo.TabIndex = 12;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // AES_Encryption
             // 
@@ -403,10 +409,10 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -442,6 +448,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
